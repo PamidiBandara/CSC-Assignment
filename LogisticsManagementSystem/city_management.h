@@ -2,17 +2,24 @@
 #define CITY_MANAGEMENT_H
 
 #define MAX_CITY_NAME_LENGTH 50
+#define MAX_CITIES 30
 
-// City structure
 typedef struct {
     char name[MAX_CITY_NAME_LENGTH];
     int index;
 } City;
+typedef struct {
+    City cities[MAX_CITIES];
+    int cityCount;
+}
+CitySystem;
 
-// Function declarations
-void add_city();
-void display_cities();
-void remove_city();
-void rename_city();
+void initialize_city_system(CitySystem*system);
+void add_city(CitySystem*system);
+void display_cities(CitySystem*system);
+void remove_city(CitySystem*system);
+void rename_city(CitySystem*system);
+void city_management_menu(CitySystem*system);
+
 
 #endif

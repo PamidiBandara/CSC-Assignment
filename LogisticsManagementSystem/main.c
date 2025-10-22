@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-
-#define MAX_CITIES 30
-#define MAX_DELIVERIES 50
+#include "city_management.h"
 
 
 void display_main_menu();
@@ -12,9 +10,12 @@ void vehicle_management();
 void delivery_request();
 void reports();
 
-int main() {
+CitySystem citySystem;
+
+int main(){
     int choice;
 
+    initialize_city_system(&citySystem);
     printf("Welcome to Logistics Management System\n");
     printf("System initialized successfully!\n");
 
@@ -22,9 +23,9 @@ int main() {
         display_main_menu();
         scanf("%d", &choice);
 
-        switch(choice) {
+        switch(choice){
             case 1:
-                city_management();
+                city_management_menu(&citySystem);
                 break;
             case 2:
                 distance_management();
@@ -39,10 +40,10 @@ int main() {
                 reports();
                 break;
             case 6:
-                printf("Thank you!\n");
+                printf("Thank you\n");
                 break;
             default:
-                printf("Invalid choice!\n");
+                printf("Invalid choice\n");
         }
     } while(choice != 6);
 
@@ -63,28 +64,21 @@ void display_main_menu() {
     printf("Choose an option (1-6): ");
 }
 
-
-void city_management() {
-    printf("\n--- City Management ---\n");
-    printf("This feature will be implemented in Phase 1\n");
-}
-
-void distance_management() {
-    printf("\n--- Distance Management ---\n");
+void distance_management(){
+    printf("\n-- Distance Management --\n");
     printf("This feature will be implemented in Phase 2\n");
 }
 
-void vehicle_management() {
-    printf("\n--- Vehicle Management ---\n");
+void vehicle_management(){
+    printf("\n-- Vehicle Management --\n");
     printf("This feature will be implemented in Phase 3\n");
 }
 
-void delivery_request() {
-    printf("\n--- Delivery Request ---\n");
+void delivery_request(){
+    printf("\n-- Delivery Request --\n");
     printf("This feature will be implemented in Phase 4\n");
 }
-
-void reports() {
-    printf("\n--- Reports ---\n");
+void reports(){
+    printf("\n-- Reports --\n");
     printf("This feature will be implemented in Phase 6\n");
 }
